@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="" label="M2M_Impact_CI" language="en" table="x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>M2M_Impact_CI</label>
+            <language>en</language>
+            <name>x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci</name>
+            <plural>M2M_Impact_CIs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
+            <sys_created_on>2023-12-20 18:12:31</sys_created_on>
+            <sys_id>e38321201b9f3d10f2ab99f0b24bcb51</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>M2M_Impact_CI</sys_name>
+            <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+            <sys_update_name>sys_documentation_x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci__en</sys_update_name>
+            <sys_updated_by>sarath.allam@kaptius.com</sys_updated_by>
+            <sys_updated_on>2023-12-20 18:14:20</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

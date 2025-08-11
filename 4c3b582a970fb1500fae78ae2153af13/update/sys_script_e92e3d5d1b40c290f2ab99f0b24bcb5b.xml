@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_pqt_impact_manag_impact</collection>
+        <condition/>
+        <description>Populate task from Impact record based on CI into M2M_Impact_Tasks table.</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_pqt_impact_manag_impact">parentVALCHANGES^EQ<item endquery="false" field="parent" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Populate Task On M2M_Impact_Tasks</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    var sourceTask = current.getValue('parent');
+    //Clear existing Task list
+    if (current.getValue('parent') != previous.getValue('parent')) {
+        var m2m_impact_parent = new GlideRecord('x_pqt_impact_manag_m2m_x_pqt_impac_task');
+        m2m_impact_parent.addQuery('u_impact', current.getValue('sys_id'));
+		m2m_impact_parent.addQuery('task',current.sys_id);
+        m2m_impact_parent.query();
+        if (m2m_impact_parent.next()) {
+            m2m_impact_parent.deleteRecord();
+        }
+    }
+	if (sourceTask != null) {
+        var m2m_impact_task = new GlideRecord('x_pqt_impact_manag_m2m_x_pqt_impac_task');
+        m2m_impact_task.initialize();
+        m2m_impact_task.setValue('u_impact', current.getValue('sys_id'));
+        m2m_impact_task.setValue('task', current.sys_id);
+        m2m_impact_task.insert();
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>ashish.routray@kaptius.com</sys_created_by>
+        <sys_created_on>2024-01-29 10:56:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e92e3d5d1b40c290f2ab99f0b24bcb5b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Populate Task On M2M_Impact_Tasks</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sys_script_e92e3d5d1b40c290f2ab99f0b24bcb5b</sys_update_name>
+        <sys_updated_by>ashish.routray@kaptius.com</sys_updated_by>
+        <sys_updated_on>2024-02-05 09:52:05</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=e92e3d5d1b40c290f2ab99f0b24bcb5b"/>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_register">
+    <sysevent_register action="INSERT_OR_UPDATE">
+        <caller_access/>
+        <derived_priority>100</derived_priority>
+        <description>Triggered by the BR when an Impact is approved.</description>
+        <event_name>x_pqt_impact_manag.pico.impact.approved</event_name>
+        <fired_by>BR:PICO Notify Impact Affected Users</fired_by>
+        <priority>100</priority>
+        <queue/>
+        <suffix>pico.impact.approved</suffix>
+        <sys_class_name>sysevent_register</sys_class_name>
+        <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
+        <sys_created_on>2024-01-02 16:28:30</sys_created_on>
+        <sys_id>c81844b01bab7590f2ab99f0b24bcbb9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_pqt_impact_manag.pico.impact.approved</sys_name>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sysevent_register_c81844b01bab7590f2ab99f0b24bcbb9</sys_update_name>
+        <sys_updated_by>sarath.allam@kaptius.com</sys_updated_by>
+        <sys_updated_on>2024-01-02 16:28:30</sys_updated_on>
+        <table>x_pqt_impact_manag_impact</table>
+    </sysevent_register>
+</record_update>

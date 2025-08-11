@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="time_zone" label="Time zone" language="en" table="x_pqt_impact_manag_impact">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>time_zone</element>
+            <help/>
+            <hint>Start time and End time will change when form save </hint>
+            <label>Time zone</label>
+            <language>en</language>
+            <name>x_pqt_impact_manag_impact</name>
+            <plural>Time zones</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
+            <sys_created_on>2024-01-16 19:25:10</sys_created_on>
+            <sys_id>1717fc111bffb910f2ab99f0b24bcbee</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Time zone</sys_name>
+            <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+            <sys_update_name>sys_documentation_x_pqt_impact_manag_impact_time_zone_en</sys_update_name>
+            <sys_updated_by>ashish.routray@kaptius.com</sys_updated_by>
+            <sys_updated_on>2024-01-31 15:42:49</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

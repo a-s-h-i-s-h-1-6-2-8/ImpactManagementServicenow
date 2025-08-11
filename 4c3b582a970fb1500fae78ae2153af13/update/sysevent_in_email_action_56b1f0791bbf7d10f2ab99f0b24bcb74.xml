@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_in_email_action">
+    <sysevent_in_email_action action="INSERT_OR_UPDATE">
+        <action>record_action</action>
+        <active>true</active>
+        <assignment_operator/>
+        <condition_script/>
+        <description/>
+        <event_name>email.read</event_name>
+        <filter_condition/>
+        <from/>
+        <name>PICO Create Case On Reply to Impact Comm</name>
+        <order>100</order>
+        <reply_email/>
+        <required_roles/>
+        <script><![CDATA[(function runAction( /*GlideRecord*/ current, /*GlideRecord*/ event, /*EmailWrapper*/ email, /*ScopedEmailLogger*/ logger, /*EmailClassifier*/ classifier) {
+	var account_sysid;
+    var contact_info = new GlideRecord('customer_contact');
+	contact_info.addQuery('email', email.origemail);
+	contact_info.query();
+	if(contact_info.next()){
+		account_sysid = contact_info.account.toString();
+	}
+	var contact = new GlideRecord('sys_user');
+	contact.addQuery('email',email.origemail);
+	gs.info("Email Test:" + email.origemail);
+	contact.query();
+	contact.next();
+
+	var impact = current.getUniqueValue();
+	var caseGr = new GlideRecord('sn_customerservice_case');
+	caseGr.addQuery('u_impact',impact);
+	caseGr.addQuery('account', account_sysid);
+	caseGr.addEncodedQuery('stateNOT IN3,7');
+	caseGr.query();
+
+	if(!caseGr.next()){
+		caseGr.initialize();
+		caseGr.short_description=email.subject;
+		caseGr.description = email.body_text;
+		caseGr.cmdb_ci = current.cmdb_ci;
+		caseGr.u_impact=impact;
+		caseGr.contact = contact.getUniqueValue();
+		caseGr.insert();
+	}else{
+		caseGr.comments = email.body_text;
+		caseGr.update();
+	}
+
+})(current, event, email, logger, classifier);]]></script>
+        <stop_processing>true</stop_processing>
+        <sys_class_name>sysevent_in_email_action</sys_class_name>
+        <sys_created_by>ashish.routray@kaptius.com</sys_created_by>
+        <sys_created_on>2024-01-18 08:29:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>56b1f0791bbf7d10f2ab99f0b24bcb74</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>PICO Create Case On Reply to Impact Comm</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sysevent_in_email_action_56b1f0791bbf7d10f2ab99f0b24bcb74</sys_update_name>
+        <sys_updated_by>ashish.routray@kaptius.com</sys_updated_by>
+        <sys_updated_on>2024-02-01 10:30:48</sys_updated_on>
+        <table>x_pqt_impact_manag_impact</table>
+        <template/>
+        <type>reply</type>
+    </sysevent_in_email_action>
+</record_update>
