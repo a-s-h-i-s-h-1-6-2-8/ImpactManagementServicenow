@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e060b1241bdf3d10f2ab99f0b24bcb23" label="M2M_Impact_Tasks" max_length="40" name="x_pqt_impact_manag_m2m_x_pqt_impac_task" type="collection">
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Impact" max_length="32" name="u_impact" reference="x_pqt_impact_manag_impact" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Task" max_length="32" name="task" reference="task" type="reference"/>
+        <index name="index">
+            <element name="task"/>
+        </index>
+        <index name="index2">
+            <element name="u_impact"/>
+        </index>
+    </element>
+</database>

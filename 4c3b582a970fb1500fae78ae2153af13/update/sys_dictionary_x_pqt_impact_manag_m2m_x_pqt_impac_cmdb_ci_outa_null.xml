@@ -47,7 +47,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>ashish.routray@kaptius.com</sys_created_by>
         <sys_created_on>2023-12-15 12:58:50</sys_created_on>
-        <sys_id>00db627a978775500fae78ae2153af9e</sys_id>
         <sys_name>x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci_outa</sys_name>
         <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
         <sys_policy/>

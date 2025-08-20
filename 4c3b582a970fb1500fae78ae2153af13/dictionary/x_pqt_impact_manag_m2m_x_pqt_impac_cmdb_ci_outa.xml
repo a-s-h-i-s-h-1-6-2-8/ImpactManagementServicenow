@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="f7cb627a978775500fae78ae2153af9c" label="M2M_Impact_Outage" max_length="40" name="x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci_outa" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Impact" max_length="32" name="u_impact" reference="x_pqt_impact_manag_impact" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Outage" max_length="32" name="cmdb_ci_outage" reference="cmdb_ci_outage" type="reference"/>
+        <index name="index">
+            <element name="cmdb_ci_outage"/>
+        </index>
+        <index name="index2">
+            <element name="u_impact"/>
+        </index>
+    </element>
+</database>

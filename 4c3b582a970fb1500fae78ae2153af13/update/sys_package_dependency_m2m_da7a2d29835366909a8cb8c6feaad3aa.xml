@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
     <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
-        <dependency display_value="Task table schema" source="com.glide.task">95e89ea51b1301103b852029274bcb22</dependency>
+        <dependency display_value="Task table schema" source="com.glide.task">30a4b778e11312105590bd68cbbecb8c</dependency>
         <min_version>1.0.0</min_version>
         <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
         <sys_created_on>2023-12-14 07:53:05</sys_created_on>
-        <sys_id>173c5caa970fb1500fae78ae2153aff5</sys_id>
+        <sys_id>da7a2d29835366909a8cb8c6feaad3aa</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
         <sys_updated_by>sarath.allam@kaptius.com</sys_updated_by>

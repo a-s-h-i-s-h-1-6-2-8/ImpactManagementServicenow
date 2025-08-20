@@ -2,7 +2,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="u_impact" table="x_pqt_impact_manag_m2m_x_pqt_impac_sys_user">
         <active>true</active>
         <array>false</array>
-        <attributes>encode_utf8=false</attributes>
+        <attributes>edge_encryption_enabled=true,encode_utf8=false</attributes>
         <audit>false</audit>
         <calculation/>
         <choice>0</choice>
@@ -47,7 +47,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
         <sys_created_on>2023-12-20 19:49:00</sys_created_on>
-        <sys_id>f0a939241b137d10f2ab99f0b24bcb03</sys_id>
         <sys_name>Impact</sys_name>
         <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
         <sys_policy/>

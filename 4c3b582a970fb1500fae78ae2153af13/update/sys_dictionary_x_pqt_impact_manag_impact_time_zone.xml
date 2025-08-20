@@ -2,7 +2,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="time_zone" table="x_pqt_impact_manag_impact">
         <active>true</active>
         <array>false</array>
-        <attributes/>
+        <attributes>edge_encryption_enabled=true</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -52,7 +52,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
         <sys_created_on>2024-01-16 19:25:10</sys_created_on>
-        <sys_id>64e6b8111bffb910f2ab99f0b24bcb90</sys_id>
         <sys_name>Time zone</sys_name>
         <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
         <sys_policy/>

@@ -16,6 +16,7 @@
         <logo/>
         <menu/>
         <name>Impact Management</name>
+        <package_json/>
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking>permissive</runtime_access_tracking>
@@ -42,4 +43,5 @@
         <vendor_prefix/>
         <version>1.0.1</version>
     </sys_app>
+    <sys_translated_text action="delete_multiple" query="documentkey=4c3b582a970fb1500fae78ae2153af13"/>
 </record_update>
