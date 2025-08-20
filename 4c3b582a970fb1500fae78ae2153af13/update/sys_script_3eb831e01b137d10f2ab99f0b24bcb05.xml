@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_pqt_impact_manag_impact</collection>
+        <condition/>
+        <description>Populate affected users from Impact record based on CI into M2M_Impact_Users table.</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_pqt_impact_manag_impact">cmdb_ciVALCHANGES^EQ<item endquery="false" field="cmdb_ci" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Populate Impact Affected Users</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    var affectedUsersList = [];
+    var ci = current.getValue('cmdb_ci');
+ 
+    //Clear existing user list
+    if (current.getValue('cmdb_ci') != previous.getValue('cmdb_ci')) {
+        var m2m_impact_user = new GlideRecord('x_pqt_impact_manag_m2m_x_pqt_impac_sys_user');
+        m2m_impact_user.addQuery('u_impact', current.getValue('sys_id'));
+        m2m_impact_user.query();
+        m2m_impact_user.deleteMultiple();
+        
+// Clear existing CI relationship
+        var m2m_impact_affected_ci = new GlideRecord('x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci');
+        m2m_impact_affected_ci.addQuery('u_impact', current.getValue('sys_id'));
+		m2m_impact_affected_ci.query();
+        if(m2m_impact_affected_ci.next()){
+            m2m_impact_affected_ci.deleteRecord();
+        }
+    }
+    //Populate new user list
+    if (ci != null) {
+        //Retrieve users associated to CI
+        var installBaseItem = new GlideRecord('sn_install_base_item');
+        installBaseItem.addQuery('configuration_item', current.getValue('cmdb_ci'));
+        installBaseItem.addQuery('state', 'in_use');
+        installBaseItem.addEncodedQuery('contactISNOTEMPTY^ORaccountISNOTEMPTY');
+        installBaseItem.query();
+        while (installBaseItem.next()) {
+            if (installBaseItem.getValue('contact') != '') {
+                affectedUsersList.push(installBaseItem.getValue('contact'));
+            } else if (installBaseItem.getValue('account') != '') {
+                var primary_contact = installBaseItem.getElement('account').getValue('primary_contact');
+                affectedUsersList.push(primary_contact);
+            }
+        }
+        //Insert users into Affected users List
+        affectedUsersList.forEach(function(user) {
+			// var accountDetails = new GlideRecord("sys_user");
+			// accountDetails.addQuery('sys_id',"user");
+			// accountDetails.query();
+			
+			// if(accountDetails.next()){
+			// 	var accountValue=accountDetails.getValue('company').toString();
+			// }
+            var m2m_impact_user = new GlideRecord('x_pqt_impact_manag_m2m_x_pqt_impac_sys_user');
+            m2m_impact_user.initialize();
+            m2m_impact_user.setValue('u_impact', current.getValue('sys_id'));
+            m2m_impact_user.setValue('u_user', user);
+			//m2m_impact_user.setValue('u_account', accountValue);
+            m2m_impact_user.insert();
+        });
+        var m2m_impact_ci = new GlideRecord('x_pqt_impact_manag_m2m_x_pqt_impac_cmdb_ci');
+        m2m_impact_ci.setValue('u_impact', current.getValue('sys_id'));
+        m2m_impact_ci.setValue('cmdb_ci', current.cmdb_ci);
+        m2m_impact_ci.insert();
+    }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
+        <sys_created_on>2023-12-20 20:14:48</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3eb831e01b137d10f2ab99f0b24bcb05</sys_id>
+        <sys_mod_count>68</sys_mod_count>
+        <sys_name>Populate Impact Affected Users</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sys_script_3eb831e01b137d10f2ab99f0b24bcb05</sys_update_name>
+        <sys_updated_by>ashish.routray@kaptius.com</sys_updated_by>
+        <sys_updated_on>2024-01-30 05:50:16</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=3eb831e01b137d10f2ab99f0b24bcb05"/>
+</record_update>

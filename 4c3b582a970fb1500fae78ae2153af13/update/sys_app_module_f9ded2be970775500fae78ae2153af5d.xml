@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Impact Management">255d523e970775500fae78ae2153afab</application>
+        <assessment/>
+        <device_type/>
+        <filter table="x_pqt_impact_manag_impact">active=true^state=2^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item display_value="Open" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="2"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Unassigned</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_pqt_impact_manag_impact</name>
+        <order>30</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <require_confirmation>false</require_confirmation>
+        <roles>x_pqt_impact_manag.impact_admin,x_pqt_impact_manag.impact_manager</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
+        <sys_created_on>2023-12-15 12:02:10</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f9ded2be970775500fae78ae2153af5d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Open(Awaiting approval)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sys_app_module_f9ded2be970775500fae78ae2153af5d</sys_update_name>
+        <sys_updated_by>sarath.allam@kaptius.com</sys_updated_by>
+        <sys_updated_on>2023-12-15 12:02:10</sys_updated_on>
+        <timeline_page/>
+        <title>Open(Awaiting approval)</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e4a979e01b137d10f2ab99f0b24bcbb9" label="M2M_Impact_Users" max_length="40" name="x_pqt_impact_manag_m2m_x_pqt_impac_sys_user" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Contact" max_length="32" name="u_user" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Impact" max_length="32" name="u_impact" reference="x_pqt_impact_manag_impact" type="reference"/>
+        <index name="index">
+            <element name="u_impact"/>
+        </index>
+        <index name="index2">
+            <element name="u_user"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="x_pqt_impact_manag_impact">state=2^EQ<item display_value="Open" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="2"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <isolate_script>true</isolate_script>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>false</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+
+}]]></script_true>
+        <set_values/>
+        <short_description>Owner Group and Owner mandatory when State is Open</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>sarath.allam@kaptius.com</sys_created_by>
+        <sys_created_on>2023-12-29 14:54:31</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ed5c871f1b5f7d50f2ab99f0b24bcb63</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Owner Group and Owner mandatory when State is Open</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sys_ui_policy_ed5c871f1b5f7d50f2ab99f0b24bcb63</sys_update_name>
+        <sys_updated_by>sarath.allam@kaptius.com</sys_updated_by>
+        <sys_updated_on>2023-12-29 14:54:31</sys_updated_on>
+        <table>x_pqt_impact_manag_impact</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>

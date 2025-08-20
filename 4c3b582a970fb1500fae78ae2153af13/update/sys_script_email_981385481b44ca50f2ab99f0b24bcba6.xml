@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>Pico - Impact_StartTimeZone</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */
+    email, /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */
+    event) {
+
+    // Add your code here
+    var usa_display = 'undefine';
+    var europe_display = 'undefine';
+    var singapore_display = 'undefine';
+	var timezone = new global.TimeZone();
+    if (current.start_time) {
+    
+        europe_display = timezone.getTimeZone(current.getDisplayValue('start_time'), "Europe/London");
+
+        var usa_value = timezone.getTimeZone(current.getDisplayValue('start_time'),"US/Eastern");
+        // var usaTimezone_parts = usa_value.split(' ');
+        // var usaTimezone_date_parts = usaTimezone_parts[0].split('-'); // WARNING - assumes system date format is dd-mm-yyyy
+        // usa_display = usaTimezone_date_parts[1] + '/' + usaTimezone_date_parts[0] + '/' + usaTimezone_date_parts[2] + ' ' + usaTimezone_parts[1];
+        // if (usaTimezone_parts[2]) {
+        //     usa_display += ' ' + usaTimezone_parts[2];
+        // }
+
+        
+        singapore_display = timezone.getTimeZone(current.getDisplayValue('start_time'), "Singapore");
+    }
+    template.print("("+usa_value +")" + ' (' + europe_display + ')' + ' (' + singapore_display + ')');
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>ashish.routray@kaptius.com</sys_created_by>
+        <sys_created_on>2024-01-25 09:23:20</sys_created_on>
+        <sys_id>981385481b44ca50f2ab99f0b24bcba6</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Pico - Impact_StartTimeZone</sys_name>
+        <sys_package display_value="Impact Management" source="x_pqt_impact_manag">4c3b582a970fb1500fae78ae2153af13</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Impact Management">4c3b582a970fb1500fae78ae2153af13</sys_scope>
+        <sys_update_name>sys_script_email_981385481b44ca50f2ab99f0b24bcba6</sys_update_name>
+        <sys_updated_by>ashish.routray@kaptius.com</sys_updated_by>
+        <sys_updated_on>2024-01-31 11:22:02</sys_updated_on>
+    </sys_script_email>
+</record_update>
