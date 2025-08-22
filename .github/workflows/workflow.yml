@@ -1,15 +1,8 @@
-name: ServiceNow DevOps Workflow
-
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-
 jobs:
   build:
     name: Publish from Dev (PDI)
     runs-on: ubuntu-latest
+    environment: Servicenow DevOps
 
     steps:
       - name: Check DNS resolution of ServiceNow PDI instance
@@ -45,9 +38,11 @@ jobs:
     name: Install and Test on Test Instance
     needs: build
     runs-on: ubuntu-latest
+    environment: Servicenow DevOps
 
     steps:
       - name: ServiceNow CI/CD Install App on Test
+        id: install_app
         uses: ServiceNow/sncicd-install-app@2.0.0
         with:
           version: ${{ needs.build.outputs.publishversion }}
@@ -56,3 +51,24 @@ jobs:
           nowPassword: ${{ secrets.SN_PASSWORD }}
           nowInstallInstance: ${{ secrets.SN_TEST_INSTANCE }}
           appSysID: ${{ secrets.SN_APP_SYSID }}
+
+      # (Optional) Run your tests here (if you had any)
+
+      # Rollback if install_app step failed and rollback version is available
+      - name: ServiceNow CI/CD Rollback App
+        if: ${{ failure() && steps.install_app.outputs.rollbackVersion }}
+        uses: ServiceNow/sncicd-rollback-app@2.0.0
+        with:
+          version: ${{ steps.install_app.outputs.rollbackVersion }}
+        env:
+          nowUsername: ${{ secrets.SN_USERNAME }}
+          nowPassword: ${{ secrets.SN_PASSWORD }}
+          nowInstallInstance: ${{ secrets.SN_TEST_INSTANCE }}
+          appSysID: ${{ secrets.SN_APP_SYSID }}
+
+      # Fail explicitly if rollback happened, so the workflow marks this job failed
+      - name: Fail after rollback
+        if: ${{ failure() }}
+        run: |
+          echo "Install or tests failed, rollback performed."
+          exit 1
