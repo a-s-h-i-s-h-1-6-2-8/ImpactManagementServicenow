@@ -1,18 +1,23 @@
-name: ServiceNow Dev to Test Promotion
+name: ServiceNow DevOps Workflow
 
 on:
-  pull_request:
   push:
     branches:
       - master
+  pull_request:
 
 jobs:
   build:
-    name: Publish from Dev
+    name: Publish from Dev (PDI)
     runs-on: ubuntu-latest
-    environment: Servicenow DevOps  # 👈 Attach to your GitHub environment
 
     steps:
+      - name: Check DNS resolution of ServiceNow PDI instance
+        run: |
+          echo "Resolving DNS for ${{ secrets.SN_DEV_INSTANCE }}"
+          nslookup ${{ secrets.SN_DEV_INSTANCE }}
+          ping -c 3 ${{ secrets.SN_DEV_INSTANCE }} || echo "Ping failed but continuing"
+
       - name: ServiceNow CI/CD Apply Changes
         uses: ServiceNow/sncicd-apply-changes@2.0.0
         env:
@@ -36,19 +41,16 @@ jobs:
     outputs:
       publishversion: ${{ steps.publish_app.outputs.newVersion }}
 
-  install_test:
-    name: Install to Test Instance
+  test:
+    name: Install and Test on Test Instance
     needs: build
     runs-on: ubuntu-latest
-    environment: Servicenow DevOps  # 👈 Also attach this job to the same environment
 
     steps:
-      - name: ServiceNow CI/CD Install App to Test
-        id: install_app_test
+      - name: ServiceNow CI/CD Install App on Test
         uses: ServiceNow/sncicd-install-app@2.0.0
         with:
           version: ${{ needs.build.outputs.publishversion }}
-          autoUpgradeBaseApp: false
         env:
           nowUsername: ${{ secrets.SN_USERNAME }}
           nowPassword: ${{ secrets.SN_PASSWORD }}
