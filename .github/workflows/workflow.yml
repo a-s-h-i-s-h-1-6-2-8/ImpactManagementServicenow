@@ -10,6 +10,7 @@ jobs:
   build:
     name: Publish from Dev
     runs-on: ubuntu-latest
+    environment: Servicenow DevOps  # 👈 Attach to your GitHub environment
 
     steps:
       - name: ServiceNow CI/CD Apply Changes
@@ -39,6 +40,7 @@ jobs:
     name: Install to Test Instance
     needs: build
     runs-on: ubuntu-latest
+    environment: Servicenow DevOps  # 👈 Also attach this job to the same environment
 
     steps:
       - name: ServiceNow CI/CD Install App to Test
