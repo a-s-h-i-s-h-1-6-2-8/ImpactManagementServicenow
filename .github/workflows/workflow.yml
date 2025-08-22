@@ -1,4 +1,4 @@
-name: ServiceNow GitHub Actions Demo
+name: ServiceNow Dev to Test Promotion
 
 on:
   pull_request:
@@ -31,7 +31,7 @@ jobs:
           nowPassword: ${{ secrets.SN_PASSWORD }}
           nowSourceInstance: ${{ secrets.SN_DEV_INSTANCE }}
           appSysID: ${{ secrets.SN_APP_SYSID }}
-          
+
     outputs:
       publishversion: ${{ steps.publish_app.outputs.newVersion }}
 
@@ -51,28 +51,4 @@ jobs:
           nowUsername: ${{ secrets.SN_USERNAME }}
           nowPassword: ${{ secrets.SN_PASSWORD }}
           nowInstallInstance: ${{ secrets.SN_TEST_INSTANCE }}
-          appSysID: ${{ secrets.SN_APP_SYSID }}
-
-    outputs:
-      publishversion: ${{ needs.build.outputs.publishversion }}
-
-  deployprod:
-    name: Deploy to Prod
-    needs: install_test
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-    environment:
-      name: production
-      url: https://<your-prod-instance>.service-now.com  # Optional: for visibility
-
-    steps:
-      - name: ServiceNow CI/CD Install App to Prod
-        id: install_app_prod
-        uses: ServiceNow/sncicd-install-app@2.0.0
-        with:
-          version: ${{ needs.install_test.outputs.publishversion }}
-        env:
-          nowUsername: ${{ secrets.SN_USERNAME }}
-          nowPassword: ${{ secrets.SN_PASSWORD }}
-          nowInstallInstance: ${{ secrets.SN_PROD_INSTANCE }}
           appSysID: ${{ secrets.SN_APP_SYSID }}
